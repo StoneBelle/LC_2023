@@ -1,16 +1,20 @@
 class Solution(object):
     def largestOddNumber(self, num):
-        # Given a number represented as a str
-        # Return the largest odd number as a str, if no odd number exist return ""
-        
-        # Iterate the given number 
+        # Variable to check if given number contains all even numbers
+        index = -1
+
+        # Iterate through each digit in given number
         for n in range(len(num)):
-            # If given number is odd return it
-            if int(num) % 2 != 0:
-                return str(num)
-            # If the number is even remove 1 digit
-            else:
-                num = num[:-1]
-                print(num)
-        # If no odd number is found return empty string
-        return ""
+           
+            # If an odd numberis found, replace the index with the odd number's index
+            if int(num[n]) % 2 != 0:
+                index = n
+        
+        # If all numbers in given number were even, index will still be -1, hence return empty string
+        if index == -1:
+            return ""
+        
+        # If odd number was found, slice given number from start, until the last odd number index +1 (due to slicing)
+        # Return the sliced number as a string
+        else:
+            return(str(num[0:index+1]))
